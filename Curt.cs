@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace curt
 {
-    internal class Program
+    internal class Curt
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }
