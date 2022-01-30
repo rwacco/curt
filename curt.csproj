@@ -114,6 +114,7 @@
     <Compile Include="CommandHandler.cs" />
     <Compile Include="Curt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

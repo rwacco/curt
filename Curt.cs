@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net;
 using Discord;
 using Discord.WebSocket;
 using Discord.Commands;
@@ -17,6 +18,8 @@ namespace curt
     {
         private readonly DiscordSocketClient _client;
         private CommandHandler _commandHandler;
+        private WebAPIServer _server;
+        private BotData _botData;
         private ulong[] COOL_PEOPLE = { 298233151162155018, 138679605237252096, 535134130980257802 };
 
         static void Main(string[] args) 
@@ -36,7 +39,13 @@ namespace curt
             _client.Log += LogAsync;
             //_client.MessageReceived += MessageReceivedAsync;
             _client.InteractionCreated += InteractionCreatedAsync;
-        
+            
+            _botData = new BotData();
+
+            // Start WebAPI server
+            _server = new WebAPIServer(IPAddress.Parse("127.0.0.1"), 1234, _botData);
+
+            Task.Run(() => _server.StartServer());
         }
 
         public async Task MainAsync()
@@ -126,6 +135,15 @@ namespace curt
                 }
 
             }
+        }
+    }
+
+    public class BotData
+    {
+        private string _motd;
+        public BotData()
+        {
+            _motd = "Test";
         }
     }
 }
