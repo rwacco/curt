@@ -141,5 +141,24 @@ namespace curt
         public Task loveduckAsync()
             => ReplyAsync("Loveduck\nhttps://cdn.discordapp.com/emojis/385464688819044354.png");
         
+		
+		// Random number:
+		[Command("dice")]
+        [Summary("Returns a random number 1 - 6")]
+        public Task dicerollAsync(){
+            
+			var rand = new Random();	// Get random number
+			// rand.Next()              // Gets another random number
+			
+			//var rand = new Random();        // Create a random instance or something
+			var byte1 = new byte[1];        // Create a byte out of this instance or something idk
+			rand.NextBytes(byte1);          // idk  (0 - 255 I think?)
+			var rollNum = (byte1[0]*6/255) + 1;		// convert to 1-6 (rounding not needed as integer value)
+			// Also, idk if the chances are fair due to rounding????
+			
+			ReplyAsync($"You have rolled a **{rollNum}**!");		
+		}
+		
+		
     }
 }
