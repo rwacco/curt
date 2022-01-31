@@ -147,10 +147,8 @@ namespace curt
         [Summary("Returns a random number 1 - 6")]
         public Task dicerollAsync(){
             
-			var rand = new Random();	// Get random number
-			// rand.Next()              // Gets another random number
-			
-			//var rand = new Random();        // Create a random instance or something
+			var rand = new Random();        // Create a random instance or something
+			// rand.Next()              	// Gets another random number
 			var byte1 = new byte[1];        // Create a byte out of this instance or something idk
 			rand.NextBytes(byte1);          // idk  (0 - 255 I think?)
 			var rollNum = (byte1[0]*6/255) + 1;		// convert to 1-6 (rounding not needed as integer value)
